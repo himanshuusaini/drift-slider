@@ -10,7 +10,7 @@ ext {
     libraryName = 'driftslider'
     artifact = 'driftslider'
 
-    libraryDescription = 'Simple, android image slider'
+    libraryDescription = 'Android Image Slider'
 
     siteUrl = 'https://github.com/himanshuusaini'
     gitUrl = 'https://github.com/himanshuusaini/drift-slider.git'
