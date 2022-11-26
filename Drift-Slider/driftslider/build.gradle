@@ -1,0 +1,73 @@
+apply plugin: 'com.android.library'
+
+
+ext {
+
+    bintrayRepo = 'android'
+    bintrayName = 'androiddriftslider'
+
+    publishedGroupId = 'io.github.himanshu'
+    libraryName = 'driftslider'
+    artifact = 'driftslider'
+
+    libraryDescription = 'Simple, android image slider'
+
+    siteUrl = 'https://github.com/himanshuusaini'
+    gitUrl = 'https://github.com/himanshuusaini/drift-slider.git'
+
+    libraryVersion = '2.5.0'
+    organization = 'himanshuusainibintray' // if you push to organization's repository.
+    developerId = 'himanshuusaini'
+    developerName = 'Himanshu Saini'
+    developerEmail = 'himanshusaini299@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+
+}
+
+android {
+    compileSdkVersion 33
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+// Add a new configuration to hold your dependencies
+configurations {
+    libConfig
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //noinspection GradleCompatible
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test:runner:1.5.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+
+}
+
+task copyLibs(type: Copy) {
+    from configurations.libConfig
+    into 'libs'
+}
+
+apply from: 'https://raw.githubusercontent.com/smarteist/bintrayUpload/master/install.gradle'
+apply from: 'https://raw.githubusercontent.com/smarteist/bintrayUpload/master/bintray.gradle'
